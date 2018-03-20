@@ -1,0 +1,44 @@
+{% from "form_macros.html" import render_field %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Detect Worms</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="#">Detect Worms</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+
+        <br>
+
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="display-4">Detect Plant Worms</h1>
+                <p class="lead">This simple application detects plant worms using a Convolutional Neural Network in python </p>
+                <hr class="my-4">
+                <p>Select the image from your Computer and click the detect button to detect</p>
+                <form method="post" action="" enctype="multipart/form-data" name="index">
+                    {{ form.hidden_tag()}}
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Pick the file</label>
+                        {{ render_field(form.image) }}
+                    </div>
+                    <p class="lead">
+                        <button type="submit" class="btn btn-primary btn-lg" role="button">Upload and Detect</button>
+                    </p>
+                </form>
+            </div>
+         </div>
+
+         <footer>
+             <p class="text-center">CUT Projects 2018</p>
+         </footer>
+
+    </body>
+</html>
