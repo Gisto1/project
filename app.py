@@ -21,7 +21,8 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 
-classifier = load_model('my_model.h5')
+army_classifier = load_model('army.h5')
+acanth_classifier = load_model('acanth.h5')
 
 class UploadForm(FlaskForm):
     image = FileField('Recipe Image', validators=[FileRequired(), FileAllowed(['jpg','png','JPG'], 'Images only!')])
@@ -39,21 +40,19 @@ def index():
 
 @app.route('/result/<filename>')
 def result(filename):
-    classifier = load_model('my_model.h5')
+    army_classifier = load_model('army.h5')
+    acanth_classifier = load_model('acanth.h5')
     test_image = image.load_img('static/img/'+filename, target_size = (64, 64))
     test_image = image.img_to_array(test_image)
     test_image = np.expand_dims(test_image, axis = 0)
-    result = classifier.predict(test_image)
-    if result[0][0] == 2:
-        prediction = 'CutWorms'
-    elif result[0][0] == 1:
+    result = acanth_classifier.predict(test_image)
+    if result[0][0] == 0:
+        prediction = 'Acanthoplus'
+    elif army_classifier.predict(test_image) == 1:
         prediction = 'Army Worm'
     else:
-        prediction = 'Acanthoplus'
-    return render_template('success.html', prediction=prediction)
-        
-
-
+        prediction = 'Image Not of corncen'
+    return prediction
 
 
 class PhotoUpload(Resource): 
