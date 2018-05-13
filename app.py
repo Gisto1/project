@@ -21,7 +21,7 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 
-army_classifier = load_model('army.h5')
+locust_classifier = load_model('locusts.h5')
 acanth_classifier = load_model('acanth.h5')
 
 class UploadForm(FlaskForm):
@@ -48,11 +48,11 @@ def result(filename):
     result = acanth_classifier.predict(test_image)
     if result[0][0] == 0:
         prediction = 'Acanthoplus'
-    elif army_classifier.predict(test_image) == 1:
-        prediction = 'Army Worm'
+    elif locust_classifier.predict(test_image) == 1:
+        prediction = 'Locust'
     else:
         prediction = 'Image Not of corncen'
-    return prediction
+    return render_template('success.html', prediction=prediction)
 
 
 class PhotoUpload(Resource): 
@@ -67,6 +67,8 @@ class PhotoUpload(Resource):
                     'status':'error'
                     }
         photo = data['file']
+
+        print(data)
 
         if photo:
             filename = 'your_image.png'
