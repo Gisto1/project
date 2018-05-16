@@ -40,7 +40,7 @@ def index():
 
 @app.route('/result/<filename>')
 def result(filename):
-    army_classifier = load_model('army.h5')
+    locust_classifier = load_model('locusts.h5')
     acanth_classifier = load_model('acanth.h5')
     test_image = image.load_img('static/img/'+filename, target_size = (64, 64))
     test_image = image.img_to_array(test_image)

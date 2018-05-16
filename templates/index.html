@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Detect Worms</title>
+        <title>ASIT</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -19,14 +19,14 @@
 
         <div class="container">
             <div class="jumbotron">
-                <h1 class="display-4">Detect Plant Worms</h1>
-                <p class="lead">This simple application detects plant worms using a Convolutional Neural Network in python </p>
+                <h1 class="display-4">Automated Species Identification Tool</h1>
+                <p class="lead"> </p>
                 <hr class="my-4">
-                <p>Select the image from your Computer and click the detect button to detect</p>
+                <p>Select the image from your Computer and click the detect button</p>
                 <form method="post" action="" enctype="multipart/form-data" name="index">
                     {{ form.hidden_tag()}}
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Pick the file</label>
+                        <label for="exampleFormControlFile1">Select the file</label>
                         {{ render_field(form.image) }}
                     </div>
                     <p class="lead">
@@ -37,7 +37,7 @@
          </div>
 
          <footer>
-             <p class="text-center">CUT Projects 2018</p>
+             <p class="text-center">CHINHOYI UNIVERSITY OF TECHNOLOGY</p>
          </footer>
 
     </body>
